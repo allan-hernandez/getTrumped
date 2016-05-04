@@ -1,0 +1,28 @@
+{
+  "name": "gettrumped",
+  "version": "1.0.0",
+  "description": "Trump's tweets as read by Amazon's Echo",
+  "main": "getTrump.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allan-hernandez/getTrumped.git"
+  },
+  "keywords": [
+    "trump",
+    "echo",
+    "alexa",
+    "amazon",
+    "twitter",
+    "donald",
+    "maga"
+  ],
+  "author": "allan-hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allan-hernandez/getTrumped/issues"
+  },
+  "homepage": "https://github.com/allan-hernandez/getTrumped#readme"
+}
