@@ -2,7 +2,7 @@
   "name": "gettrumped",
   "version": "1.0.0",
   "description": "Trump's tweets as read by Amazon's Echo",
-  "main": "getTrump.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
