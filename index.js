@@ -1,14 +1,9 @@
-
-
-
 var Twitter = require('twitter');
 
 /**
  * App ID for the skill
  */
 var APP_ID = "amzn1.echo-sdk-ams.app.da577c38-6f7b-423e-ad97-17272af2dd72";
-
-
 
 function getTweets(r) {
 
@@ -22,13 +17,14 @@ function getTweets(r) {
         access_token_secret : '' 
     });
 
+    // user_id for @realDonaldTrump
     var params = {'user_id': '25073877', 'count': '10'};
     client.get('statuses/user_timeline', params, function(error, tweets, response){
       if (!error) {
+        // break tweets into array
         for (i = 0; i < tweets.length; i++) {
           tweetText.push(tweets[i].text);
         }
-        console.log('parsing tweets');
 
         var finalSpeech = [];
 
@@ -44,7 +40,6 @@ function getTweets(r) {
 
         finalSpeech = finalSpeech.join(' ');
         giveResponse(r,finalSpeech);
-    //    toAlexaSpeech(tweetText);
       }
       else {
         console.log(error);
@@ -54,9 +49,9 @@ function getTweets(r) {
 
 
 function punctuationOutOutOut(tweet) {
-  // take out \n https:// RT @username:
-
+  // take out \n https:// 
   var messageBack = '';
+
   console.log('cleaning');
   messageBack = tweet.replace(/(\r\n|\n|\r)/gm,"");
 
@@ -69,9 +64,7 @@ function punctuationOutOutOut(tweet) {
 }
 
 
-/**
- * The AlexaSkill prototype and helper functions
- */
+
 var AlexaSkill = require('./AlexaSkill');
 
 
@@ -79,14 +72,12 @@ var getTrumped = function () {
     AlexaSkill.call(this, APP_ID);
 };
 
-// Extend AlexaSkill
 getTrumped.prototype = Object.create(AlexaSkill.prototype);
 getTrumped.prototype.constructor = getTrumped;
 
 getTrumped.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
     console.log("getTrumped onSessionStarted requestId: " + sessionStartedRequest.requestId
         + ", sessionId: " + session.sessionId);
-    // any initialization logic goes here
 };
 
 getTrumped.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
@@ -94,13 +85,10 @@ getTrumped.prototype.eventHandlers.onLaunch = function (launchRequest, session, 
     handleNewFactRequest(response);
 };
 
-/**
- * Overridden to show that a subclass can override this function to teardown session state.
- */
+
 getTrumped.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
     console.log("getTrumped onSessionEnded requestId: " + sessionEndedRequest.requestId
         + ", sessionId: " + session.sessionId);
-    // any cleanup logic goes here
 };
 
 getTrumped.prototype.intentHandlers = {
@@ -123,12 +111,7 @@ getTrumped.prototype.intentHandlers = {
     }
 };
 
-/**
- * Get 10 last tweets
- */
 function handleNewFactRequest(response) {
-
-    // Create speech output
     console.log('new request');
     getTweets(response);
 }
