@@ -9,7 +9,7 @@ function getTweets(r) {
 
     var tweetText = []; 
 
-    // from twitter dev
+    // from twitter dev, removed for github commit
     var client = new Twitter({
        consumer_key : '',
         consumer_secret : '',
@@ -28,15 +28,11 @@ function getTweets(r) {
 
         var finalSpeech = [];
 
-        finalSpeech.push('<speak>');
-
         for (i = 0; i < tweetText.length; i++) {
             console.log('call cleanup of tweets');
             finalSpeech.push(punctuationOutOutOut(tweetText[i]));
             finalSpeech.push(' <break time="1s" />');
         }
-        
-        finalSpeech.push('</speak>');
 
         finalSpeech = finalSpeech.join(' ');
         giveResponse(r,finalSpeech);
